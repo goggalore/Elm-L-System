@@ -8,4 +8,8 @@ type alias Model =
     , amount : Int
     , axiom : String
     , rules : List ( String, String )
+    , util :
+        { description : Bool
+        , commands : Bool
+        }
     }

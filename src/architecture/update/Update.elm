@@ -4,6 +4,7 @@ import Msgs exposing (Msg(..))
 import Models exposing (Model)
 import Cases.Rules exposing (initial, final)
 import Cases.Increment exposing (increment)
+import Cases.Tabs exposing (toggleDescription, toggleCommands)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -29,6 +30,12 @@ update msg model =
 
         Increment _ ->
             increment model
+
+        ToggleDescription ->
+            toggleDescription model
+
+        ToggleCommands ->
+            toggleCommands model
 
 
 valid : String -> Int

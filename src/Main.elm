@@ -25,6 +25,10 @@ init =
       , amount = 1
       , axiom = ""
       , rules = []
+      , util =
+            { description = False
+            , commands = True
+            }
       }
     , Cmd.none
     )
