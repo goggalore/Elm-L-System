@@ -1,0 +1,100 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    font-family: "Arial", "Helvetica", "sans-serif";
+
+    overflow: hidden;
+}
+
+p, h1, h2, dl, small {
+    padding: 0px 10px 0px 10px;
+}
+
+input, select {
+    margin-left: 10px;
+}
+
+h1, h2 {
+    background: #d8d8d8;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+}
+
+
+#main {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    display: flex;
+}
+
+@media (max-aspect-ratio: 5/4) {
+    main {
+      flex-direction: column;
+    }
+  }
+
+#elm {
+    flex: 0 0 350px;
+    padding: 0;
+    overflow: auto;
+
+    background: #e9e9e9;
+}
+
+#controls {
+    margin: 0;
+}
+
+
+#canvasContainer {
+    background: #f0f0f0;
+    position: relative;
+    flex: 1 0 0;
+    overflow: hidden'
+}
+
+#canvasMain {
+    width: 100%;
+    height: 100%;
+}
+
+.tabs {
+    padding: 0;
+    margin: 0;
+    background: #d8d8d8;
+    display: flex;
+    list-style: none;
+}
+
+.tabs .tab {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 10px 15px;
+}
+
+.tabs .tab:hover {
+    background: #cacaca;
+    cursor: pointer;
+  }
+
+.rulePair {
+    margin: 10px 0px;
+}
+
+.controlGroup {
+    margin-top: 20px;
+}
+
+hr {
+    background-color:#9e9e9e;
+    border: 0;
+    margin-top: 25px;
+    height: 1px;
+  }
