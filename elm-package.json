@@ -6,6 +6,7 @@
     "source-directories": [
         "src/architecture",
         "src/architecture/update",
+        "src/architecture/views",
         "src/helpers"
     ],
     "exposed-modules": [],
