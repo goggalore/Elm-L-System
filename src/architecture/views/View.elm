@@ -2,7 +2,7 @@ module View exposing (..)
 
 import Html exposing (Html, a, canvas, div, footer, h1, h2, header, hr, input, label, option, section, select, small, text)
 import Html.Attributes exposing (class, href, id, placeholder, style, title, type_, value)
-import Html.Events exposing (onInput, onFocus, onClick)
+import Html.Events exposing (onInput, onClick)
 import HtmlMsg.Rules exposing (ruleSet)
 import HtmlMsg.Tabs exposing (description, commands)
 import Msgs exposing (Msg, Msg(..))
