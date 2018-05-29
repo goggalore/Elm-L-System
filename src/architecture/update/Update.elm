@@ -5,6 +5,7 @@ import Models exposing (Model)
 import Cases.Rules exposing (initial, final)
 import Cases.Increment exposing (increment)
 import Cases.Tabs exposing (toggleDescription, toggleCommands)
+import Presets exposing (presets)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -30,6 +31,9 @@ update msg model =
 
         Increment _ ->
             increment model
+
+        Preset selection ->
+            ( presets model selection, Cmd.none )
 
         ToggleDescription ->
             toggleDescription model

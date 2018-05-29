@@ -9,5 +9,6 @@ type Msg
     | Increment String
     | Initial Int String
     | Final Int String
+    | Preset String
     | ToggleDescription
     | ToggleCommands
