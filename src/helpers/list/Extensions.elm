@@ -63,6 +63,24 @@ getMember n list =
 
 
 
+-- gets the nth (indexed by 0) member of a list, or returns some default member
+
+
+getMemberWithDefault : Int -> a -> List a -> a
+getMemberWithDefault n default list =
+    let
+        member =
+            getMember n list
+    in
+        case member of
+            Just value ->
+                value
+
+            Nothing ->
+                default
+
+
+
 -- removes the nth (indexed by 0) member of a list
 
 
