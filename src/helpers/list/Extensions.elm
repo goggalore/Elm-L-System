@@ -62,6 +62,11 @@ getMember n list =
             |> List.head
 
 
+getLastMember : List a -> Maybe a
+getLastMember list =
+    getMember (List.length list - 1) list
+
+
 
 -- gets the nth (indexed by 0) member of a list, or returns some default member
 
