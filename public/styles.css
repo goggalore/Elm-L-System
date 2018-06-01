@@ -17,7 +17,7 @@ input, select {
 }
 
 h1, h2 {
-    background: #d8d8d8;
+    background: #bfcada;
 }
 
 h1 {
@@ -68,7 +68,7 @@ h1 {
 .tabs {
     padding: 0;
     margin: 0;
-    background: #d8d8d8;
+    background: #bfcada;
     display: flex;
     list-style: none;
 }
@@ -80,7 +80,7 @@ h1 {
 }
 
 .tabs .tab:hover {
-    background: #cacaca;
+    background: #a3b9da;
     cursor: pointer;
   }
 
