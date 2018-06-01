@@ -8,6 +8,7 @@
         "src/architecture/update",
         "src/architecture/views",
         "src/components/presets",
+        "src/components",
         "src/helpers"
     ],
     "exposed-modules": [],
