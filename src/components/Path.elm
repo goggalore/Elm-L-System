@@ -30,15 +30,15 @@ commandStringHelp model result =
             commandStringHelp { model | iterations = model.iterations - 1 } newResult
 
 
-isRule : Char -> ( Char, String ) -> Bool
+isRule : Char -> ( String, String ) -> Bool
 isRule char rule =
-    if Tuple.first rule == char then
+    if Tuple.first rule == String.fromChar char then
         True
     else
         False
 
 
-mapCharToRule : List ( Char, String ) -> Char -> String
+mapCharToRule : List ( String, String ) -> Char -> String
 mapCharToRule ruleSet char =
     let
         lastDefined =
