@@ -12,13 +12,13 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Iterations iterations ->
-            ( { model | iterations = valid iterations }, Cmd.none )
+            ( { model | iterations = validInt iterations }, Cmd.none )
 
         Angle angle ->
-            ( { model | angle = valid angle }, Cmd.none )
+            ( { model | angle = validFloat angle }, Cmd.none )
 
         Orientation orientation ->
-            ( { model | orientation = valid orientation }, Cmd.none )
+            ( { model | orientation = validFloat orientation }, Cmd.none )
 
         Axiom axiom ->
             ( { model | axiom = axiom }, Cmd.none )
@@ -42,9 +42,19 @@ update msg model =
             toggleCommands model
 
 
-valid : String -> Int
-valid input =
+validInt : String -> Int
+validInt input =
     case String.toInt input of
+        Err message ->
+            0
+
+        Ok number ->
+            number
+
+
+validFloat : String -> Float
+validFloat input =
+    case String.toFloat input of
         Err message ->
             0
 
