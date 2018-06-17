@@ -9,7 +9,7 @@ export const loadWorker = (data, path) => {
         }
 
         worker.onerror = () => {
-            const message = `Something went wrong with the worker with file ${path}`
+            const message = `Something went wrong with the worker with file ${path}`;
             worker.terminate();
             reject(new Error(message));
         }
