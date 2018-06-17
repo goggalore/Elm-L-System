@@ -1,4 +1,4 @@
-module Update exposing (..)
+port module Update exposing (..)
 
 import Msgs exposing (Msg(..))
 import Models exposing (Model)
@@ -6,6 +6,7 @@ import Cases.Rules exposing (initial, final)
 import Cases.Increment exposing (increment)
 import Cases.Tabs exposing (toggleDescription, toggleCommands)
 import Presets exposing (presets)
+import Ports.Draw
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -40,6 +41,9 @@ update msg model =
 
         ToggleCommands ->
             toggleCommands model
+
+        Draw _ ->
+            ( model, Ports.Draw.draw model )
 
 
 validInt : String -> Int

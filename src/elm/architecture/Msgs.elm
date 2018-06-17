@@ -12,3 +12,4 @@ type Msg
     | Preset String
     | ToggleDescription
     | ToggleCommands
+    | Draw String

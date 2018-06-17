@@ -22,14 +22,14 @@ view model =
             , description model
             , commands model
             ]
-        , div [ id "presets", class "controlGroup" ]
+        , div [ id "presets", class "controlGroup", onChange Draw ]
             [ h2 [] [ text "Presets" ]
             , select [ onChange Preset ]
                 [ option [] [ text "Dragon Curve" ]
                 , option [] [ text "Sierpinski Triangle" ]
                 ]
             ]
-        , div [ id "inputs", class "controlGroup" ]
+        , div [ id "inputs", class "controlGroup", onInput Draw ]
             [ h2 [] [ text "Custom" ]
             , input [ placeholder "Iterations", type_ "number", onInput Iterations, value <| toString model.iterations ] []
             , input [ placeholder "Angle", type_ "number", onInput Angle, value <| toString model.angle ] []

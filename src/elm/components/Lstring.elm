@@ -1,23 +1,17 @@
-module Path exposing (..)
+module Lstring exposing (getCommandString)
 
 import List.Extensions exposing (getLastMember)
+import Spaces exposing (removeSpacesFromModel)
 import Models exposing (Model)
 
 
-type alias Coordinates =
-    { x : Float
-    , y : Float
-    , action : String
-    }
+getCommandString : Model -> String
+getCommandString model =
+    getCommandStringHelp (removeSpacesFromModel model) model.axiom
 
 
-commandString : Model -> String
-commandString model =
-    commandStringHelp model model.axiom
-
-
-commandStringHelp : Model -> String -> String
-commandStringHelp model result =
+getCommandStringHelp : Model -> String -> String
+getCommandStringHelp model result =
     if model.iterations <= 0 then
         result
     else
@@ -27,7 +21,7 @@ commandStringHelp model result =
                     |> List.map (mapCharToRule model.rules)
                     |> String.join ""
         in
-            commandStringHelp { model | iterations = model.iterations - 1 } newResult
+            getCommandStringHelp { model | iterations = model.iterations - 1 } newResult
 
 
 isRule : Char -> ( String, String ) -> Bool
