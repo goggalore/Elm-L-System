@@ -4,12 +4,13 @@
     "repository": "https://github.com/user/project.git",
     "license": "BSD3",
     "source-directories": [
-        "src/architecture",
-        "src/architecture/update",
-        "src/architecture/views",
-        "src/components/presets",
-        "src/components",
-        "src/helpers"
+        "src/elm",
+        "src/elm/architecture",
+        "src/elm/architecture/update",
+        "src/elm/architecture/views",
+        "src/elm/components/presets",
+        "src/elm/components",
+        "src/elm/helpers"
     ],
     "exposed-modules": [],
     "dependencies": {
