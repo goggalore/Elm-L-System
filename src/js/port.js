@@ -1,6 +1,6 @@
 import { loadWorker } from './workers/workers.js';
 
-const node = document.getElementById("elm")
+const node = document.getElementById('elm');
 const app = Elm.Main.embed(node);
 
 app.ports.draw.subscribe((model) => {

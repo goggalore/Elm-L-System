@@ -16,7 +16,7 @@ function arrayToObject(array) {
     const result = {};
 
     for (let i = 0; i < array.length; i++) {
-        result[array[i][0]] = array[i][1]
+        result[array[i][0]] = array[i][1];
     }
 
     return result;
