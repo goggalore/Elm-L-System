@@ -6,6 +6,7 @@ import Html.Events exposing (onInput, onClick)
 import Html.Events.Extensions exposing (onChange)
 import HtmlMsg.Rules exposing (ruleSet)
 import HtmlMsg.Tabs exposing (description, commands)
+import HtmlMsg.Titles exposing (titles)
 import Msgs exposing (Msg, Msg(..))
 import Models exposing (Model)
 
@@ -27,14 +28,17 @@ view model =
             , select [ onChange Preset ]
                 [ option [] [ text "Dragon Curve" ]
                 , option [] [ text "Sierpinski Triangle" ]
+                , option [] [ text "Fractal Plant" ]
+                , option [] [ text "Symmetrical Plant" ]
+                , option [] [ text "Seaweed" ]
                 ]
             ]
         , div [ id "inputs", class "controlGroup", onInput Draw ]
             [ h2 [] [ text "Custom" ]
-            , input [ placeholder "Iterations", type_ "number", onInput Iterations, value <| toString model.iterations ] []
-            , input [ placeholder "Angle", type_ "number", onInput Angle, value <| toString model.angle ] []
-            , input [ placeholder "Orientation", type_ "number", onInput Orientation, value <| toString model.orientation ] []
-            , input [ placeholder "Axiom", onInput Axiom, value model.axiom ] []
+            , input [ placeholder "Iterations", type_ "number", onInput Iterations, title titles.iterations, value <| toString model.iterations ] []
+            , input [ placeholder "Angle", type_ "number", onInput Angle, title titles.angle, value <| toString model.angle ] []
+            , input [ placeholder "Orientation", type_ "number", onInput Orientation, title titles.orientation, value <| toString model.orientation ] []
+            , input [ placeholder "Axiom", onInput Axiom, title titles.axiom, value model.axiom ] []
             , div [ class "ruleSet" ] (ruleSet model)
             ]
         , hr [] []
