@@ -36,13 +36,52 @@ presets model selection =
                     }
                 }
 
+            "Fractal Plant" ->
+                { iterations = 6
+                , angle = 25
+                , orientation = 90
+                , amount = 3
+                , axiom = "X"
+                , rules = [ ( "X", "F+[[X]-X]-F[-FX]+X" ), ( "F", "FF" ), ( "", "" ) ]
+                , util =
+                    { description = util.description
+                    , commands = util.commands
+                    }
+                }
+
+            "Symmetrical Plant" ->
+                { iterations = 8
+                , angle = 30
+                , orientation = 90
+                , amount = 3
+                , axiom = "X"
+                , rules = [ ( "X", "F[+X][-X]FX" ), ( "F", "FF" ), ( "", "" ) ]
+                , util =
+                    { description = util.description
+                    , commands = util.commands
+                    }
+                }
+
+            "Seaweed" ->
+                { iterations = 5
+                , angle = 25
+                , orientation = 90
+                , amount = 2
+                , axiom = "F"
+                , rules = [ ( "F", "F[+F]F[-F]F" ), ( "", "" ) ]
+                , util =
+                    { description = util.description
+                    , commands = util.commands
+                    }
+                }
+
             selection ->
                 { iterations = 0
                 , angle = 0
                 , orientation = 0
                 , amount = 1
                 , axiom = ""
-                , rules = [ ( "", "Something went wrong" ) ]
+                , rules = [ ( "", "" ) ]
                 , util =
                     { description = util.description
                     , commands = util.commands
