@@ -11,5 +11,6 @@ type alias Model =
     , util :
         { description : Bool
         , commands : Bool
+        , animate : Bool
         }
     }

@@ -5,6 +5,7 @@ import Models exposing (Model)
 import Cases.Rules exposing (initial, final)
 import Cases.Increment exposing (increment)
 import Cases.Tabs exposing (toggleDescription, toggleCommands)
+import Cases.Animation exposing (toggleAnimation)
 import Presets exposing (presets)
 import Ports.Draw
 
@@ -36,11 +37,21 @@ update msg model =
         Preset selection ->
             ( presets model selection, Cmd.none )
 
+        Clear ->
+            let
+                cleared =
+                    presets model "Clear"
+            in
+                ( cleared, Ports.Draw.draw cleared )
+
         ToggleDescription ->
             toggleDescription model
 
         ToggleCommands ->
             toggleCommands model
+
+        ToggleAnimation ->
+            toggleAnimation model
 
         Draw _ ->
             ( model, Ports.Draw.draw model )

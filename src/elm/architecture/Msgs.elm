@@ -10,6 +10,8 @@ type Msg
     | Initial Int String
     | Final Int String
     | Preset String
+    | Clear
     | ToggleDescription
     | ToggleCommands
+    | ToggleAnimation
     | Draw String

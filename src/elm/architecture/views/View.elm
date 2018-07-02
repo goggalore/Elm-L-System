@@ -1,9 +1,10 @@
 module View exposing (..)
 
-import Html exposing (Html, a, canvas, div, footer, h1, h2, header, hr, input, label, option, section, select, small, text)
+import Html exposing (Html, a, button, canvas, div, footer, h1, h2, header, hr, input, label, option, section, select, small, text)
 import Html.Attributes exposing (class, href, id, placeholder, style, title, type_, value)
 import Html.Events exposing (onInput, onClick)
 import Html.Events.Extensions exposing (onChange)
+import HtmlMsg.Checkbox exposing (checkbox)
 import HtmlMsg.Rules exposing (ruleSet)
 import HtmlMsg.Tabs exposing (description, commands)
 import HtmlMsg.Titles exposing (titles)
@@ -33,14 +34,28 @@ view model =
                 , option [] [ text "Seaweed" ]
                 ]
             ]
+        , div [ id "animate", class "controlGroup", onChange Draw ]
+            [ h2 [] [ text "Animation" ]
+            , checkbox ToggleAnimation "Animate"
+            ]
         , div [ id "inputs", class "controlGroup", onInput Draw ]
             [ h2 [] [ text "Custom" ]
-            , input [ placeholder "Iterations", type_ "number", onInput Iterations, title titles.iterations, value <| toString model.iterations ] []
-            , input [ placeholder "Angle", type_ "number", onInput Angle, title titles.angle, value <| toString model.angle ] []
-            , input [ placeholder "Orientation", type_ "number", onInput Orientation, title titles.orientation, value <| toString model.orientation ] []
+            , div []
+                [ button [ onClick Clear ] [ text "Clear" ] ]
+            , input [ placeholder "Iterations", type_ "number", onInput Iterations, title titles.iterations, value <| display model.iterations ] []
+            , input [ placeholder "Angle", type_ "number", onInput Angle, title titles.angle, value <| display model.angle ] []
+            , input [ placeholder "Orientation", type_ "number", onInput Orientation, title titles.orientation, value <| display model.orientation ] []
             , input [ placeholder "Axiom", onInput Axiom, title titles.axiom, value model.axiom ] []
             , div [ class "ruleSet" ] (ruleSet model)
             ]
         , hr [] []
         , footer [ class "controlGroup" ] [ small [] [ text "By June Crane | ", a [ href "https://github.com/goggalore" ] [ text "Github" ] ] ]
         ]
+
+
+display : number -> String
+display value =
+    if value == 0 then
+        ""
+    else
+        toString value

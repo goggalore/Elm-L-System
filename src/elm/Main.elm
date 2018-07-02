@@ -33,6 +33,7 @@ init =
                 , util =
                     { description = False
                     , commands = True
+                    , animate = False
                     }
                 }
                 "Dragon Curve"

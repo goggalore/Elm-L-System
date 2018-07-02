@@ -1,4 +1,8 @@
-export function renderDrawing(transforms) {
+import { renderDrawing } from './draw.js'
+
+let prev = undefined;
+
+export function renderAnimation(transforms) {
     const canvas = document.getElementById('canvasMain');
     const context = canvas.getContext('2d');
 
@@ -21,13 +25,35 @@ export function renderDrawing(transforms) {
     context.lineWidth = 1/scale;
     context.strokeStyle = "black"
 
-    for (var i = 0; i < path.length; i++) {
+    let i = 0;
+
+    const animate = () => 
+    {
+        if (i < path.length - 1) {
+            prev = window.requestAnimationFrame(animate);
+        }
+
+        else {
+            renderDrawing(transforms);
+        }
+
         if (path[i]['action'] === 'lineTo') {
             context.lineTo(path[i].x, path[i].y);
         }
         else {
             context.moveTo(path[i].x, path[i].y);
         }
+
+        context.stroke();
+        i += 1;
     }
-    context.stroke();
+    
+    stopPreviousAnimation();
+    animate();
+}
+
+export function stopPreviousAnimation() {
+    if (prev) {
+        window.cancelAnimationFrame(prev);
+    }
 }
