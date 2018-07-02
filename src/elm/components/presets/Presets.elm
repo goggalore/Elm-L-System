@@ -17,10 +17,7 @@ presets model selection =
                 , amount = 3
                 , axiom = "Fx"
                 , rules = [ ( "x", "x+yF+" ), ( "y", "-Fx-y" ), ( "", "" ) ]
-                , util =
-                    { description = util.description
-                    , commands = util.commands
-                    }
+                , util = util
                 }
 
             "Sierpinski Triangle" ->
@@ -30,10 +27,7 @@ presets model selection =
                 , amount = 3
                 , axiom = "F-G-G"
                 , rules = [ ( "F", "F-G+F+G-F" ), ( "G", "GG" ), ( "", "" ) ]
-                , util =
-                    { description = util.description
-                    , commands = util.commands
-                    }
+                , util = util
                 }
 
             "Fractal Plant" ->
@@ -43,10 +37,7 @@ presets model selection =
                 , amount = 3
                 , axiom = "X"
                 , rules = [ ( "X", "F+[[X]-X]-F[-FX]+X" ), ( "F", "FF" ), ( "", "" ) ]
-                , util =
-                    { description = util.description
-                    , commands = util.commands
-                    }
+                , util = util
                 }
 
             "Symmetrical Plant" ->
@@ -56,10 +47,7 @@ presets model selection =
                 , amount = 3
                 , axiom = "X"
                 , rules = [ ( "X", "F[+X][-X]FX" ), ( "F", "FF" ), ( "", "" ) ]
-                , util =
-                    { description = util.description
-                    , commands = util.commands
-                    }
+                , util = util
                 }
 
             "Seaweed" ->
@@ -69,10 +57,7 @@ presets model selection =
                 , amount = 2
                 , axiom = "F"
                 , rules = [ ( "F", "F[+F]F[-F]F" ), ( "", "" ) ]
-                , util =
-                    { description = util.description
-                    , commands = util.commands
-                    }
+                , util = util
                 }
 
             selection ->
@@ -82,8 +67,5 @@ presets model selection =
                 , amount = 1
                 , axiom = ""
                 , rules = [ ( "", "" ) ]
-                , util =
-                    { description = util.description
-                    , commands = util.commands
-                    }
+                , util = util
                 }
