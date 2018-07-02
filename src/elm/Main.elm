@@ -33,10 +33,11 @@ init =
                 , util =
                     { description = False
                     , commands = True
-                    , animate = False
+                    , animate = True
+                    , stroke = "#000000"
                     }
                 }
-                "Dragon Curve"
+                "Hypnotic Circle"
     in
         ( preset, Ports.Draw.draw preset )
 

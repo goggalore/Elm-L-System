@@ -15,7 +15,7 @@ export function getTransformations(model) {
     };
 
     const maxDimension = {
-        width: canvas.width * 0.65, 
+        width: canvas.width * 0.85, 
         height: canvas.height * 0.85
     };
 

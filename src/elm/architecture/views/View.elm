@@ -5,6 +5,7 @@ import Html.Attributes exposing (class, href, id, placeholder, style, title, typ
 import Html.Events exposing (onInput, onClick)
 import Html.Events.Extensions exposing (onChange)
 import HtmlMsg.Checkbox exposing (checkbox)
+import HtmlMsg.Color exposing (color)
 import HtmlMsg.Rules exposing (ruleSet)
 import HtmlMsg.Tabs exposing (description, commands)
 import HtmlMsg.Titles exposing (titles)
@@ -27,7 +28,8 @@ view model =
         , div [ id "presets", class "controlGroup", onChange Draw ]
             [ h2 [] [ text "Presets" ]
             , select [ onChange Preset ]
-                [ option [] [ text "Dragon Curve" ]
+                [ option [] [ text "Hypnotic Circle" ]
+                , option [] [ text "Dragon Curve" ]
                 , option [] [ text "Sierpinski Triangle" ]
                 , option [] [ text "Fractal Plant" ]
                 , option [] [ text "Symmetrical Plant" ]
@@ -35,8 +37,9 @@ view model =
                 ]
             ]
         , div [ id "animate", class "controlGroup", onChange Draw ]
-            [ h2 [] [ text "Animation" ]
-            , checkbox ToggleAnimation "Animate"
+            [ h2 [] [ text "Options" ]
+            , div [ class "controlGroup" ] [ checkbox ToggleAnimation "Animate" ]
+            , div [ class "controlGroup" ] [ color Stroke "Line color" ]
             ]
         , div [ id "inputs", class "controlGroup", onInput Draw ]
             [ h2 [] [ text "Custom" ]

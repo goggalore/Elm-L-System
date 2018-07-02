@@ -10,6 +10,16 @@ presets model selection =
             model.util
     in
         case selection of
+            "Hypnotic Circle" ->
+                { iterations = 9
+                , angle = 143
+                , orientation = 0
+                , amount = 2
+                , axiom = "A"
+                , rules = [ ( "A", "A+A" ), ( "", "" ) ]
+                , util = util
+                }
+
             "Dragon Curve" ->
                 { iterations = 14
                 , angle = 90
