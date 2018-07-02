@@ -12,8 +12,12 @@ p, h1, h2, dl, small {
     padding: 0px 10px 0px 10px;
 }
 
-input, select {
+input, select, button {
     margin-left: 10px;
+}
+
+button {
+    margin-bottom: 20px;
 }
 
 h1, h2 {
@@ -35,7 +39,7 @@ h1 {
 }
 
 @media (max-aspect-ratio: 5/4) {
-    main {
+    #main {
       flex-direction: column;
     }
   }
@@ -57,7 +61,7 @@ h1 {
     background: #f0f0f0;
     position: relative;
     flex: 1 0 0;
-    overflow: hidden'
+    overflow: hidden;
 }
 
 #canvasMain {
@@ -98,3 +102,7 @@ hr {
     margin-top: 25px;
     height: 1px;
   }
+
+footer {
+    margin-bottom: 20px;
+}
