@@ -10,6 +10,7 @@ type Msg
     | Initial Int String
     | Final Int String
     | Preset String
+    | Stroke String
     | Clear
     | ToggleDescription
     | ToggleCommands

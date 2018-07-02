@@ -37,6 +37,13 @@ update msg model =
         Preset selection ->
             ( presets model selection, Cmd.none )
 
+        Stroke hex ->
+            let
+                util =
+                    model.util
+            in
+                ( { model | util = { util | stroke = hex } }, Cmd.none )
+
         Clear ->
             let
                 cleared =

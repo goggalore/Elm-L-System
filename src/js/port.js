@@ -1,4 +1,4 @@
-import { getTransformations } from './transformations.js';
+import { getTransformations } from './canvas/transformations.js';
 import { renderDrawing } from './canvas/draw.js';
 import { renderAnimation, stopPreviousAnimation } from './canvas/animate.js';
 
@@ -7,11 +7,11 @@ const app = Elm.Main.embed(node);
 
 app.ports.draw.subscribe((model) => {
     if (model.util.animate) {
-        renderAnimation(getTransformations(model));
+        renderAnimation(getTransformations(model), model.util);
     }
     
     else {
         stopPreviousAnimation();
-        renderDrawing(getTransformations(model));
+        renderDrawing(getTransformations(model), model.util);
     }
 });

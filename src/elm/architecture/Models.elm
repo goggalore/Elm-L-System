@@ -12,5 +12,6 @@ type alias Model =
         { description : Bool
         , commands : Bool
         , animate : Bool
+        , stroke : String
         }
     }

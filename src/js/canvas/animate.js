@@ -2,7 +2,7 @@ import { renderDrawing } from './draw.js'
 
 let prev = undefined;
 
-export function renderAnimation(transforms) {
+export function renderAnimation(transforms, options) {
     const canvas = document.getElementById('canvasMain');
     const context = canvas.getContext('2d');
 
@@ -12,7 +12,7 @@ export function renderAnimation(transforms) {
     const center = transforms.center;
 
     context.restore();
-    context.clearRect(0, 0, canvas.width, canvas.height)
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     context.save();
     context.beginPath();
@@ -23,7 +23,7 @@ export function renderAnimation(transforms) {
         center['y']/scale - bounds.center['y']);
         
     context.lineWidth = 1/scale;
-    context.strokeStyle = "black"
+    context.strokeStyle = options.stroke;
 
     let i = 0;
 
@@ -34,7 +34,7 @@ export function renderAnimation(transforms) {
         }
 
         else {
-            renderDrawing(transforms);
+            renderDrawing(transforms, options);
         }
 
         if (path[i]['action'] === 'lineTo') {
