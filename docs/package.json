@@ -1,0 +1,29 @@
+{
+  "name": "elm-l-system",
+  "version": "1.0.0",
+  "description": "HTML5 Canvas powered L-System renderer",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goggalore/Elm-L-System.git"
+  },
+  "keywords": [
+    "canvas",
+    "fractal",
+    "l-system"
+  ],
+  "author": "June Crane",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/goggalore/Elm-L-System/issues"
+  },
+  "homepage": "https://github.com/goggalore/Elm-L-System#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "rollup-stream": "^1.24.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
