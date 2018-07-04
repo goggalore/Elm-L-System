@@ -1,32 +1,14 @@
-import { renderDrawing } from './draw.js'
+import { renderDrawing } from './draw.js';
+import { getContext } from './context.js';
 
 let prev = undefined;
 
 export function renderAnimation(transforms, options) {
     const canvas = document.getElementById('canvasMain');
-    const context = canvas.getContext('2d');
-
+    const context = getContext(canvas, transforms, options);
     const path = transforms.path;
-    const bounds = transforms.bounds;
-    const scale = transforms.scale;
-    const center = transforms.center;
-
-    context.restore();
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    context.save();
-    context.beginPath();
-
-    context.scale(scale, scale);
-    context.translate(
-        center['x']/scale - bounds.center['x'],
-        center['y']/scale - bounds.center['y']);
-        
-    context.lineWidth = 1/scale;
-    context.strokeStyle = options.stroke;
 
     let i = 0;
-
     const animate = () => 
     {
         if (i < path.length - 1) {
