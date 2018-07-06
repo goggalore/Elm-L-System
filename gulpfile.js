@@ -8,7 +8,8 @@ gulp.task('rollup', () => {
         format: 'iife',
     })
     .pipe(source('port.js'))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest('./docs/build'));
 });
 
 gulp.task('default', gulp.series('rollup'), () => {
