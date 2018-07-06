@@ -9,7 +9,7 @@ export function renderTimedAnimation(transforms, options, ms) {
 
     const path = transforms.path;
     const fps = 60;
-    const steps = Math.floor(path.length / (fps * (ms/1000)));
+    const steps = Math.floor(path.length / (fps * (ms/1000))) || 1;
 
     let i = 0;
     const animate = () => 
@@ -24,8 +24,7 @@ export function renderTimedAnimation(transforms, options, ms) {
 
         for (let l = steps * i; l < steps * i + steps; l++) {
             if (path[l] === undefined) {
-                i++;
-                return;
+                break;
             }
 
             if (path[l]['action'] === 'lineTo') {
