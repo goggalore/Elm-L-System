@@ -10,4 +10,7 @@ toggleAnimation model =
         util =
             model.util
     in
-        ( { model | util = { util | animate = not util.animate } }, Cmd.none )
+        if util.animate then
+            ( { model | util = { util | animate = not util.animate, timed = False } }, Cmd.none )
+        else
+            ( { model | util = { util | animate = not util.animate, timed = util.animate } }, Cmd.none )

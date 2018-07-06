@@ -169,7 +169,7 @@ function getTransformations(model) {
     };
 
     const maxDimension = {
-        width: canvas.width * 0.65, 
+        width: canvas.width * 0.85, 
         height: canvas.height * 0.85
     };
 
@@ -186,47 +186,9 @@ function getTransformations(model) {
     }
 }
 
-function renderDrawing(transforms, options) {
-    const canvas = document.getElementById('canvasMain');
+function getContext(canvas, transforms, options) {
     const context = canvas.getContext('2d');
 
-    const path = transforms.path;
-    const bounds = transforms.bounds;
-    const scale = transforms.scale;
-    const center = transforms.center;
-
-    context.restore();
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    context.save();
-    context.beginPath();
-    
-    context.scale(scale, scale);
-    context.translate(
-        center['x']/scale - bounds.center['x'],
-        center['y']/scale - bounds.center['y']);
-            
-    context.lineWidth = 1/scale;
-    context.strokeStyle = options.stroke;
-
-    for (var i = 0; i < path.length; i++) {
-        if (path[i]['action'] === 'lineTo') {
-            context.lineTo(path[i].x, path[i].y);
-        }
-        else {
-            context.moveTo(path[i].x, path[i].y);
-        }
-    }
-    context.stroke();
-}
-
-let prev = undefined;
-
-function renderAnimation(transforms, options) {
-    const canvas = document.getElementById('canvasMain');
-    const context = canvas.getContext('2d');
-
-    const path = transforms.path;
     const bounds = transforms.bounds;
     const scale = transforms.scale;
     const center = transforms.center;
@@ -245,8 +207,33 @@ function renderAnimation(transforms, options) {
     context.lineWidth = 1/scale;
     context.strokeStyle = options.stroke;
 
-    let i = 0;
+    return context;
+}
 
+function renderDrawing(transforms, options) {
+    const canvas = document.getElementById('canvasMain');
+    const context = getContext(canvas, transforms, options);
+    const path = transforms.path;
+
+    for (var i = 0; i < path.length; i++) {
+        if (path[i]['action'] === 'lineTo') {
+            context.lineTo(path[i].x, path[i].y);
+        }
+        else {
+            context.moveTo(path[i].x, path[i].y);
+        }
+    }
+    context.stroke();
+}
+
+let prev = undefined;
+
+function renderAnimation(transforms, options) {
+    const canvas = document.getElementById('canvasMain');
+    const context = getContext(canvas, transforms, options);
+    const path = transforms.path;
+
+    let i = 0;
     const animate = () => 
     {
         if (i < path.length - 1) {
@@ -268,7 +255,6 @@ function renderAnimation(transforms, options) {
         i += 1;
     };
     
-    stopPreviousAnimation();
     animate();
 }
 
@@ -278,17 +264,77 @@ function stopPreviousAnimation() {
     }
 }
 
+let prev$1 = undefined;
+
+function renderTimedAnimation(transforms, options, ms) {
+    const canvas = document.getElementById('canvasMain');
+    const context = getContext(canvas, transforms, options);
+
+    const path = transforms.path;
+    const fps = 60;
+    const steps = Math.floor(path.length / (fps * (ms/1000)));
+
+    let i = 0;
+    const animate = () => 
+    {
+        if (i * steps < path.length - 1) {
+            prev$1 = window.requestAnimationFrame(animate);
+        }
+
+        else {
+            renderDrawing(transforms, options);
+        }
+
+        for (let l = steps * i; l < steps * i + steps; l++) {
+            if (path[l] === undefined) {
+                i++;
+                return;
+            }
+
+            if (path[l]['action'] === 'lineTo') {
+                context.lineTo(path[l].x, path[l].y);
+            }
+            else {
+                context.moveTo(path[l].x, path[l].y);
+            }
+        }
+
+        context.stroke();
+        i += 1;
+    };
+
+    animate();
+}
+
+function stopPreviousTimedAnimation() {
+    if (prev$1) {
+        window.cancelAnimationFrame(prev$1);
+    }
+}
+
+function stopAnimations() {
+    stopPreviousAnimation();
+    stopPreviousTimedAnimation();
+}
+
 const node = document.getElementById('elm');
 const app = Elm.Main.embed(node);
 
 app.ports.draw.subscribe((model) => {
+    const transforms = getTransformations(model);
+
+    stopAnimations();
+
     if (model.util.animate) {
-        renderAnimation(getTransformations(model), model.util);
+        renderAnimation(transforms, model.util);
     }
     
+    else if (model.util.timed) {
+        renderTimedAnimation(transforms, model.util, 4000);
+    }
+
     else {
-        stopPreviousAnimation();
-        renderDrawing(getTransformations(model), model.util);
+        renderDrawing(transforms, model.util);
     }
 });
 

@@ -33,7 +33,8 @@ init =
                 , util =
                     { description = False
                     , commands = True
-                    , animate = True
+                    , animate = False
+                    , timed = True
                     , stroke = "#000000"
                     }
                 }

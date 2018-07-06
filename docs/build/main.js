@@ -8263,6 +8263,7 @@ var _elm_lang$html$Html_Events$Options = F2(
 var _user$project$Msgs$Draw = function (a) {
 	return {ctor: 'Draw', _0: a};
 };
+var _user$project$Msgs$ToggleTimed = {ctor: 'ToggleTimed'};
 var _user$project$Msgs$ToggleAnimation = {ctor: 'ToggleAnimation'};
 var _user$project$Msgs$ToggleCommands = {ctor: 'ToggleCommands'};
 var _user$project$Msgs$ToggleDescription = {ctor: 'ToggleDescription'};
@@ -8304,14 +8305,24 @@ var _user$project$Models$Model = F7(
 
 var _user$project$Cases_Animation$toggleAnimation = function (model) {
 	var util = model.util;
-	return {
+	return util.animate ? {
 		ctor: '_Tuple2',
 		_0: _elm_lang$core$Native_Utils.update(
 			model,
 			{
 				util: _elm_lang$core$Native_Utils.update(
 					util,
-					{animate: !util.animate})
+					{animate: !util.animate, timed: false})
+			}),
+		_1: _elm_lang$core$Platform_Cmd$none
+	} : {
+		ctor: '_Tuple2',
+		_0: _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				util: _elm_lang$core$Native_Utils.update(
+					util,
+					{animate: !util.animate, timed: util.animate})
 			}),
 		_1: _elm_lang$core$Platform_Cmd$none
 	};
@@ -8529,6 +8540,31 @@ var _user$project$Cases_Tabs$toggleDescription = function (model) {
 	};
 };
 
+var _user$project$Cases_Timed$toggleTimed = function (model) {
+	var util = model.util;
+	return util.timed ? {
+		ctor: '_Tuple2',
+		_0: _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				util: _elm_lang$core$Native_Utils.update(
+					util,
+					{timed: !util.timed, animate: false})
+			}),
+		_1: _elm_lang$core$Platform_Cmd$none
+	} : {
+		ctor: '_Tuple2',
+		_0: _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				util: _elm_lang$core$Native_Utils.update(
+					util,
+					{timed: !util.timed, animate: util.timed})
+			}),
+		_1: _elm_lang$core$Platform_Cmd$none
+	};
+};
+
 var _user$project$Html_Events_Extensions$onChange = function (tagger) {
 	return A2(
 		_elm_lang$html$Html_Events$on,
@@ -8536,8 +8572,8 @@ var _user$project$Html_Events_Extensions$onChange = function (tagger) {
 		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetValue));
 };
 
-var _user$project$HtmlMsg_Checkbox$checkbox = F2(
-	function (msg, name) {
+var _user$project$HtmlMsg_Checkbox$checkbox = F3(
+	function (msg, name, bool) {
 		return A2(
 			_elm_lang$html$Html$label,
 			{ctor: '[]'},
@@ -8550,7 +8586,7 @@ var _user$project$HtmlMsg_Checkbox$checkbox = F2(
 						_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$checked(true),
+							_0: _elm_lang$html$Html_Attributes$checked(bool),
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$html$Html_Events$onClick(msg),
@@ -8969,7 +9005,7 @@ var _user$project$Ports_Draw$draw = _elm_lang$core$Native_Platform.outgoingPort(
 				function (v) {
 					return [v._0, v._1];
 				}),
-			util: {description: v.util.description, commands: v.util.commands, animate: v.util.animate, stroke: v.util.stroke}
+			util: {description: v.util.description, commands: v.util.commands, animate: v.util.animate, timed: v.util.timed, stroke: v.util.stroke}
 		};
 	});
 
@@ -9069,6 +9105,8 @@ var _user$project$Update$update = F2(
 				return _user$project$Cases_Tabs$toggleCommands(model);
 			case 'ToggleAnimation':
 				return _user$project$Cases_Animation$toggleAnimation(model);
+			case 'ToggleTimed':
+				return _user$project$Cases_Timed$toggleTimed(model);
 			default:
 				return {
 					ctor: '_Tuple2',
@@ -9317,7 +9355,7 @@ var _user$project$View$view = function (model) {
 										},
 										{
 											ctor: '::',
-											_0: A2(_user$project$HtmlMsg_Checkbox$checkbox, _user$project$Msgs$ToggleAnimation, 'Animate'),
+											_0: A3(_user$project$HtmlMsg_Checkbox$checkbox, _user$project$Msgs$ToggleAnimation, 'Real Animate', model.util.animate),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
@@ -9331,10 +9369,25 @@ var _user$project$View$view = function (model) {
 											},
 											{
 												ctor: '::',
-												_0: A2(_user$project$HtmlMsg_Color$color, _user$project$Msgs$Stroke, 'Line color'),
+												_0: A3(_user$project$HtmlMsg_Checkbox$checkbox, _user$project$Msgs$ToggleTimed, 'Quick Animate', model.util.timed),
 												_1: {ctor: '[]'}
 											}),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$class('controlGroup'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(_user$project$HtmlMsg_Color$color, _user$project$Msgs$Stroke, 'Line color'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}
 								}
 							}),
@@ -9572,7 +9625,7 @@ var _user$project$Main$init = function () {
 			amount: 1,
 			axiom: '',
 			rules: {ctor: '[]'},
-			util: {description: false, commands: true, animate: true, stroke: '#000000'}
+			util: {description: false, commands: true, animate: false, timed: true, stroke: '#000000'}
 		},
 		'Hypnotic Circle');
 	return {

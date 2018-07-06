@@ -12,6 +12,7 @@ type alias Model =
         { description : Bool
         , commands : Bool
         , animate : Bool
+        , timed : Bool
         , stroke : String
         }
     }

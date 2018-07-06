@@ -5,9 +5,9 @@ import Html.Attributes exposing (checked, type_)
 import Html.Events exposing (onClick)
 
 
-checkbox : msg -> String -> Html msg
-checkbox msg name =
+checkbox : msg -> String -> Bool -> Html msg
+checkbox msg name bool =
     label []
-        [ input [ type_ "checkbox", checked True, onClick msg ] []
+        [ input [ type_ "checkbox", checked bool, onClick msg ] []
         , text name
         ]

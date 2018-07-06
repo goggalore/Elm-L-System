@@ -15,4 +15,5 @@ type Msg
     | ToggleDescription
     | ToggleCommands
     | ToggleAnimation
+    | ToggleTimed
     | Draw String

@@ -6,6 +6,7 @@ import Cases.Rules exposing (initial, final)
 import Cases.Increment exposing (increment)
 import Cases.Tabs exposing (toggleDescription, toggleCommands)
 import Cases.Animation exposing (toggleAnimation)
+import Cases.Timed exposing (toggleTimed)
 import Presets exposing (presets)
 import Ports.Draw
 
@@ -59,6 +60,9 @@ update msg model =
 
         ToggleAnimation ->
             toggleAnimation model
+
+        ToggleTimed ->
+            toggleTimed model
 
         Draw _ ->
             ( model, Ports.Draw.draw model )

@@ -30,7 +30,6 @@ export function renderAnimation(transforms, options) {
         i += 1;
     }
     
-    stopPreviousAnimation();
     animate();
 }
 
