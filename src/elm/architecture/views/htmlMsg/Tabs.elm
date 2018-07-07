@@ -31,7 +31,7 @@ commands model =
         section [ class "controlGroup", hidden util.commands ]
             [ dl [] [ text "+  means rotate counterclockwise by angle" ]
             , dl [] [ text "-  means rotate clockwise by angle" ]
-            , dl [] [ text "[  means ave current position and orientation" ]
+            , dl [] [ text "[  means save current position and orientation" ]
             , dl [] [ text "]  means return to the most recently saved position and orientation" ]
             , dl [] [ text "Any uppercase character: Draw forward" ]
             , dl [] [ text "Any lowercase character: Denotes a constant, and is used to control the evolution of the curve." ]

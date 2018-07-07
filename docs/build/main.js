@@ -8756,7 +8756,7 @@ var _user$project$HtmlMsg_Tabs$commands = function (model) {
 						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text('[  means ave current position and orientation'),
+							_0: _elm_lang$html$Html$text('[  means save current position and orientation'),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
