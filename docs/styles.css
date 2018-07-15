@@ -37,7 +37,7 @@ h1 {
 }
 
 
-#main {
+main {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -46,7 +46,7 @@ h1 {
 }
 
 @media (max-aspect-ratio: 5/4) {
-    #main {
+    main {
       flex-direction: column;
     }
   }
