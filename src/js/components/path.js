@@ -43,7 +43,7 @@ export function computePath (model, commands) {
 				position.x += radius * Math.cos(orientation); 
 				position.y -= radius * Math.sin(orientation);
 				path.push({x: position.x, y: position.y, action: 'lineTo'});
-			break;
+				break;
 			}
 		}
 	}
