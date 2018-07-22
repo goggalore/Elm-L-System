@@ -1,7 +1,7 @@
-import { computeCommands } from '../components/commands.js';
-import { computePath } from '../components/path.js';
-import { computeBounds } from '../components/bounds.js';
-import { computeScale } from '../components/scale.js';
+import { computeCommands } from '../commands.js';
+import { computePath } from '../path.js';
+import { computeBounds } from '../bounds.js';
+import { computeScale } from '../scale.js';
 
 export function getTransformations(model) {
     const canvas = document.getElementById('canvasMain');
