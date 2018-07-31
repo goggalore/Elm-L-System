@@ -167,10 +167,10 @@ function getTransformations(model) {
         x: canvas.width/2, 
         y: canvas.height/2
     };
-
+    
     const maxDimension = {
-        width: canvas.width * 0.85, 
-        height: canvas.height * 0.85
+        width: canvas.height * 0.90, 
+        height: canvas.height * 0.90
     };
 
     const commands = computeCommands(model);
