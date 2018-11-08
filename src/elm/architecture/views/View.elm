@@ -46,9 +46,9 @@ view model =
             [ h2 [] [ text "Custom" ]
             , div []
                 [ button [ onClick Clear ] [ text "Clear" ] ]
-            , input [ placeholder "Iterations", type_ "number", onInput Iterations, title titles.iterations, value <| display model.iterations ] []
-            , input [ placeholder "Angle", type_ "number", onInput Angle, title titles.angle, value <| display model.angle ] []
-            , input [ placeholder "Orientation", type_ "number", onInput Orientation, title titles.orientation, value <| display model.orientation ] []
+            , input [ placeholder "Iterations", type_ "number", onInput Iterations, title titles.iterations, value <| displayInt model.iterations ] []
+            , input [ placeholder "Angle", type_ "number", onInput Angle, title titles.angle, value <| displayFloat model.angle ] []
+            , input [ placeholder "Orientation", type_ "number", onInput Orientation, title titles.orientation, value <| displayFloat model.orientation ] []
             , input [ placeholder "Axiom", onInput Axiom, title titles.axiom, value model.axiom ] []
             , div [ class "ruleSet" ] (ruleSet model)
             ]
@@ -57,9 +57,17 @@ view model =
         ]
 
 
-display : number -> String
-display value =
+displayInt : Int -> String
+displayInt value =
     if value == 0 then
         ""
     else
-        toString value
+        String.fromInt value
+
+
+displayFloat : Float -> String 
+displayFloat value =
+    if value == 0 then
+        ""
+    else 
+        String.fromFloat value

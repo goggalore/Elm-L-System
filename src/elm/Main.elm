@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Html exposing (program)
+import Browser
 import Models exposing (Model)
 import Msgs exposing (Msg)
 import Update exposing (update)
@@ -9,9 +9,9 @@ import Ports.Draw
 import Presets
 
 
-main : Program Never Model Msg
+main : Program () Model Msg
 main =
-    Html.program
+    Browser.element
         { init = init
         , view = view
         , update = update
@@ -19,8 +19,8 @@ main =
         }
 
 
-init : ( Model, Cmd Msg )
-init =
+init : () -> ( Model, Cmd Msg )
+init _ =
     let
         preset =
             Presets.presets

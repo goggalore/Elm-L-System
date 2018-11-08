@@ -70,7 +70,7 @@ presets model selection =
                 , util = util
                 }
 
-            selection ->
+            _ ->
                 { iterations = 0
                 , angle = 0
                 , orientation = 0

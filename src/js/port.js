@@ -5,8 +5,9 @@ import { renderTimedAnimation } from './canvas/timedAnimate.js';
 import { stopAnimations } from './canvas/stop';
 import { debounce } from "./components/debounce";
 
-const node = document.getElementById('elm');
-const app = Elm.Main.embed(node);
+const app = Elm.Main.embed(
+    document.getElementById('elm')
+);
 
 app.ports.draw.subscribe((model) => {
     const render = () => {
@@ -16,7 +17,7 @@ app.ports.draw.subscribe((model) => {
         if (model.util.animate) {
             renderAnimation(transforms, model.util);
         }
-        
+
         else if (model.util.timed) {
             renderTimedAnimation(transforms, model.util, 4000);
         }
@@ -25,7 +26,7 @@ app.ports.draw.subscribe((model) => {
             renderDrawing(transforms, model.util);
         }
     }
-    
+
     window.onresize = debounce(render, 100);
     render();
 });

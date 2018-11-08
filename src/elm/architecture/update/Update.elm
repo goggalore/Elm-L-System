@@ -71,18 +71,18 @@ update msg model =
 validInt : String -> Int
 validInt input =
     case String.toInt input of
-        Err message ->
+        Nothing ->
             0
 
-        Ok number ->
+        Just number ->
             number
 
 
 validFloat : String -> Float
 validFloat input =
     case String.toFloat input of
-        Err message ->
+        Nothing ->
             0
 
-        Ok number ->
+        Just number ->
             number
