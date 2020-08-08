@@ -160,16 +160,16 @@ function computeScale(bounds, maxDimension) {
 function getTransformations(model) {
     const canvas = document.getElementById('canvasMain');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 2000;
+    canvas.height = 2000;
 
     const center = {
-        x: canvas.width/2, 
-        y: canvas.height/2
+        x: canvas.width / 2,
+        y: canvas.height / 2
     };
-    
+
     const maxDimension = {
-        width: canvas.height * 0.90, 
+        width: canvas.width * 0.90,
         height: canvas.height * 0.90
     };
 
@@ -179,7 +179,7 @@ function getTransformations(model) {
     const scale = computeScale(bounds, maxDimension);
 
     return {
-        path : path,
+        path: path,
         bounds: bounds,
         scale: scale,
         center: center

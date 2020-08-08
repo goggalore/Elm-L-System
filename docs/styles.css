@@ -56,16 +56,15 @@ main {
     padding: 0;
     overflow: auto;
 
-    background: #e9e9e9;
+    background: #fff;
 }
 
 #controls {
     margin: 0;
 }
 
-
 #canvasContainer {
-    background: #f0f0f0;
+    background: #fff;
     position: relative;
     flex: 1 0 0;
     overflow: hidden;
@@ -104,7 +103,7 @@ main {
 }
 
 hr {
-    background-color:#9e9e9e;
+    background-color:#fff;
     border: 0;
     margin-top: 25px;
     height: 1px;
