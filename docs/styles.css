@@ -24,6 +24,8 @@ select {
     text-indent: 8px;
     border-radius: 10px;
     border-color: lightgray;
+    border-style: solid;
+    border-width: 1;
 }
 
 input[type=color] {
