@@ -21,7 +21,7 @@ select, button {
 select {
     width: 150px;
     height: 30px;
-    text-indent: 15px;
+    text-indent: 8px;
     border-radius: 10px;
     border-color: lightgray;
 }
@@ -49,6 +49,7 @@ input[type=checkbox] {
     border-color: lightgray; 
     outline: none;
     margin-bottom: 3px;
+    text-indent: 8px;
 }
 
 button {
@@ -67,8 +68,8 @@ button:focus, button:hover, select:focus {
     background-color: #f5f5f5;
 }
 
-h1, h2 {
-    background: #bfcada;
+h1, h2, .tabs {
+    background: #ebedf2;
 }
 
 h1 {
@@ -78,6 +79,7 @@ h1 {
 
 h2 {
     padding-left: 11px;
+    border-radius: 8px;
 }
 
 main {
@@ -120,9 +122,10 @@ main {
 .tabs {
     padding: 0;
     margin: 0;
-    background: #bfcada;
     display: flex;
     list-style: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .tabs .tab {
